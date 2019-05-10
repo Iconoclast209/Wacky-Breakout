@@ -29,4 +29,10 @@ public class Ball : MonoBehaviour
         //Tell GameController this ball is gone
         Destroy(this.gameObject);
     }
+
+    public AddSpeedToBall()
+    {
+        //Figure this out
+    }
+
 }
