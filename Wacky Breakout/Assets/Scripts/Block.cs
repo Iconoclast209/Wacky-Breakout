@@ -55,10 +55,11 @@ public class Block : MonoBehaviour
             Ball[] balls = FindObjectsOfType<Ball>();
             foreach(Ball ball in balls)
             {
-                //Add speed for specified time period
+                ball.AddSpeedToBall();
             }
-
         }
+
+        Destroy(this.gameObject);
     }
     #endregion
 }

@@ -30,9 +30,10 @@ public class Ball : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public AddSpeedToBall()
+    public void AddSpeedToBall()
     {
         //Figure this out
+        Debug.Log("Adding speed to this ball.");
     }
 
 }
