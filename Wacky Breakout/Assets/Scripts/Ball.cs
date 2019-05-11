@@ -5,12 +5,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField]
-    float lifetime = 5f;
+    float lifetime;
     float elapsedTime = 0;
     
     // Start is called before the first frame update
     void Start()
     {
+        lifetime = ConfigurationUtils.BallLifetime;
         //Tell GameController a new ball exists
     }
 

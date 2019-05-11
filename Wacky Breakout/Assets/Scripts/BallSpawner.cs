@@ -8,8 +8,8 @@ public class BallSpawner : MonoBehaviour
     [SerializeField]
     GameObject ballPrefab;
     [SerializeField]
-    float timeBetweenBalls = 3f;
-    float timeSinceLastBall = 2f;
+    float timeBetweenBalls;
+    float timeSinceLastBall;
     #endregion
 
 
@@ -17,7 +17,7 @@ public class BallSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeBetweenBalls = ConfigurationUtils.BallSpawnTime;
     }
 
     // Update is called once per frame
