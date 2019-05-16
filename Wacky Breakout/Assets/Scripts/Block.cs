@@ -20,6 +20,7 @@ public class Block : MonoBehaviour
     private void Start()
     {
         gameController = FindObjectOfType<GameController>();
+        gameController.AddBlock();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -58,7 +59,7 @@ public class Block : MonoBehaviour
                 ball.AddSpeedToBall();
             }
         }
-
+        gameController.BlockDestroyed();
         Destroy(this.gameObject);
     }
     #endregion
