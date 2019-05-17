@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-
+    #region FIELDS
     [SerializeField]
-    int score = 0;
+    static int score = 0;
     [SerializeField]
     Text scoreText;
     [SerializeField]
@@ -16,22 +16,24 @@ public class GameController : MonoBehaviour
     int blocksRemaining = 0;
     [SerializeField]
     int ballsRemaining = 5;
-
     LevelManager levelManager;
+    #endregion
+
+    #region PROPERTIES
+    public static int CurrentScore
+    {
+        get { return score; }
+    }
+    #endregion
 
 
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         levelManager = FindObjectOfType<LevelManager>();
         scoreText.text = "Score:  " + score;
         ballsLeftText.text = "Balls Left:  " + ballsRemaining;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void RecordScore(int a)
