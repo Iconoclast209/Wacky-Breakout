@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     int ballsRemaining = 5;
     LevelManager levelManager;
+    AudioSource audioSource;
     #endregion
 
     #region PROPERTIES
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
     {
         score = 0;
         levelManager = FindObjectOfType<LevelManager>();
+        audioSource = GetComponent<AudioSource>();
         scoreText.text = "Score:  " + score;
         ballsLeftText.text = "Balls Left:  " + ballsRemaining;
     }
@@ -70,6 +72,11 @@ public class GameController : MonoBehaviour
     {
         levelManager.LoadNextLevel();
         Debug.Log("Game Ended");
+    }
+
+    public void PlayBounceSFX()
+    {
+        audioSource.Play();
     }
 
 }

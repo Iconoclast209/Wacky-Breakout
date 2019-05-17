@@ -7,12 +7,13 @@ public class Ball : MonoBehaviour
     [SerializeField]
     float lifetime;
     float elapsedTime = 0;
+    GameController gameController;
     
     // Start is called before the first frame update
     void Start()
     {
         lifetime = ConfigurationUtils.BallLifetime;
-        //Tell GameController a new ball exists
+        gameController = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -35,6 +36,14 @@ public class Ball : MonoBehaviour
     {
         //Figure this out
         Debug.Log("Adding speed to this ball.");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Wall"))
+        {
+            gameController.PlayBounceSFX();
+        }
     }
 
 }
