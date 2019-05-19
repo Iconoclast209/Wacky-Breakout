@@ -10,6 +10,7 @@ public class BallSpawner : MonoBehaviour
     [SerializeField]
     float timeBetweenBalls;
     float timeSinceLastBall;
+    GameObject newBall;
     #endregion
 
 
@@ -35,12 +36,20 @@ public class BallSpawner : MonoBehaviour
     {
         //spawn a ball
         //Instantiate a ball
-        GameObject newBall = Instantiate(ballPrefab, this.transform.position, Quaternion.identity);
-        //apply force to the ball with a slightly random angle downwards
-        Vector2 trajectory = new Vector2(Random.Range(-.2f, .2f), -1);
-        newBall.GetComponent<Rigidbody2D>().AddForce(trajectory*10, ForceMode2D.Impulse);
+        newBall = Instantiate(ballPrefab, this.transform.position, Quaternion.identity);
+        newBall.GetComponent<Rigidbody2D>().isKinematic = true;
+        Invoke("ReleaseBall", 1f);
 
         timeSinceLastBall = 0f;
+    }
+
+    void ReleaseBall()
+    {
+        //apply force to the ball with a slightly random angle downwards
+        Vector2 trajectory = new Vector2(Random.Range(-.2f, .2f), -1);
+        Rigidbody2D ballRig = newBall.GetComponent<Rigidbody2D>();
+        ballRig.isKinematic = false;
+        ballRig.AddForce(trajectory * 10, ForceMode2D.Impulse);
     }
     #endregion
 }
