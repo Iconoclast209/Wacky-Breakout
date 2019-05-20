@@ -14,41 +14,80 @@ public class ConfigurationData
     const string ConfigurationDataFileName = "ConfigurationData.csv";
 
     // configuration data with default values
-    static float ballLifetime = 5;
-    static float ballSpawnTime = 3;
-
+    static float ballLifetime = 1;
+    static float minBallSpawnTime = 1;
+    static float maxBallSpawnTime = 1;
+    static int numberBallsPerGame = 1;
+    static float probabilityStandard = 1;
+    static float probabilityBonus = 1;
+    static float probabilityFreezer = 1;
+    static float probabilitySpeedup = 1;
+    static int pointsStandard = 1;
+    static int pointsFreezer = 1;
+    static int pointsSpeedup = 1;
     #endregion
 
     #region Properties
-
-    /// <summary>
-    /// Gets the teddy bear move units per second
-    /// </summary>
-    /// <value>teddy bear move units per second</value>
+        
     public float BallLifetime
     {
         get { return ballLifetime; }
     }
-        
-    /// <summary>
-    /// Gets the cooldown seconds for shooting
-    /// </summary>
-    /// <value>cooldown seconds</value>
-    public float BallSpawnTime
+    
+    public float MinBallSpawnTime
     {
-        get { return ballSpawnTime; }    
+        get { return minBallSpawnTime; }    
+    }
+
+    public float MaxBallSpawnTime
+    {
+        get { return maxBallSpawnTime; }
+    }
+
+    public int NumberBallsPerGame
+    {
+        get { return numberBallsPerGame; }
+    }
+
+    public float ProbabilityStandard
+    {
+        get { return probabilityStandard; }
+    }
+
+    public float ProbabilityBonus
+    {
+        get { return probabilityBonus; }
+    }
+
+    public float ProbabilityFreezer
+    {
+        get { return probabilityFreezer; }
+    }
+
+    public float ProbabilitySpeedup
+    {
+        get { return probabilitySpeedup; }
+    }
+    
+    public int PointsStandard
+    {
+        get { return pointsStandard; }
+    }
+
+    public int PointsFreezer
+    {
+        get { return pointsFreezer; }
+    }
+
+    public int PointsSpeedup
+    {
+        get { return pointsSpeedup; }
     }
 
     #endregion
 
     #region Constructor
 
-    /// <summary>
-    /// Constructor
-    /// Reads configuration data from a file. If the file
-    /// read fails, the object contains default values for
-    /// the configuration data
-    /// </summary>
     public ConfigurationData()
     {
         // read and save configuration data from file
@@ -74,20 +113,22 @@ public class ConfigurationData
         }
 
     }
+    #endregion
 
-
-    /// <summary>
-    /// Sets the configuration data fields from the provided
-    /// csv string
-    /// </summary>
-    /// <param name="csvValues">csv string of values</param>
     static void SetConfigurationDataFields(string csvValues)
     {
         string[] values = csvValues.Split(',');
         ballLifetime = float.Parse(values[0]);
-        ballSpawnTime = float.Parse(values[1]);
+        minBallSpawnTime = float.Parse(values[1]);
+        maxBallSpawnTime = float.Parse(values[2]);
+        numberBallsPerGame = int.Parse(values[3]);
+        probabilityStandard = float.Parse(values[4]);
+        probabilityBonus = float.Parse(values[5]);
+        probabilityFreezer = float.Parse(values[6]);
+        probabilitySpeedup = float.Parse(values[7]);
+        pointsStandard = int.Parse(values[8]);
+        pointsFreezer = int.Parse(values[9]);
+        pointsSpeedup = int.Parse(values[10]);
 
     }
-
-    #endregion
 }

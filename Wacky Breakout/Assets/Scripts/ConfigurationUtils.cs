@@ -9,31 +9,76 @@ public static class ConfigurationUtils
 {
     static ConfigurationData configData;
 
-    #region Properties
-    /// <summary>
-    /// Gets the teddy bear move units per second
-    /// </summary>
-    /// <value>teddy bear move units per second</value>
+    #region PROPERTIES
+    
     public static float BallLifetime
     {
         get { return configData.BallLifetime; }
+        //used in Ball.cs
+    }
+        
+    public static float MinBallSpawnTime
+    {
+        get { return configData.MinBallSpawnTime; }
+        //used in BallSpawner.cs
+    }
+    public static float MaxBallSpawnTime
+    {
+        get { return configData.MaxBallSpawnTime; }
+        //used in BallSpawner.cs
     }
 
-    /// <summary>
-    /// Gets the cooldown seconds for shooting
-    /// </summary>
-    /// <value>cooldown seconds</value>
-    public static float BallSpawnTime
+    public static int NumberBallsPerGame
     {
-        get { return configData.BallSpawnTime; }    
+        get { return configData.NumberBallsPerGame; }
+        //used in GameController.cs
     }
+
+    public static float ProbabilityStandard
+    {
+        get { return configData.ProbabilityStandard; }
+    }
+
+    public static float ProbabilityBonus
+    {
+        get { return configData.ProbabilityBonus; }
+    }
+
+    public static float ProbabilityFreezer
+    {
+        get { return configData.ProbabilityFreezer; }
+
+    }
+
+    public static float ProbabilitySpeedup
+    {
+        get { return configData.ProbabilitySpeedup; }
+    }
+
+    public static int PointsStandard
+    {
+        get { return configData.PointsStandard; }
+        //used in Block.cs
+    }
+
+    public static int PointsFreezer
+    {
+        get { return configData.PointsFreezer; }
+        //used in Block.cs
+    }
+
+    public static int PointsSpeedup
+    {
+        get { return configData.PointsSpeedup; }
+        //used in Block.cs
+    }
+
     #endregion
 
-    /// <summary>
-    /// Initializes the configuration utils
-    /// </summary>
+    #region METHODS
     public static void Initialize()
     {
         configData = new ConfigurationData();
     }
+    #endregion
 }

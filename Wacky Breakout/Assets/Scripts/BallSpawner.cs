@@ -8,7 +8,10 @@ public class BallSpawner : MonoBehaviour
     [SerializeField]
     GameObject ballPrefab;
     [SerializeField]
-    float timeBetweenBalls;
+    float minTimeBetweenBalls;
+    float maxTimeBetweenBalls;
+    float nextTimeBetweenBalls;
+
     float timeSinceLastBall;
     GameObject newBall;
     #endregion
@@ -18,7 +21,9 @@ public class BallSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeBetweenBalls = ConfigurationUtils.BallSpawnTime;
+        minTimeBetweenBalls = ConfigurationUtils.MinBallSpawnTime;
+        maxTimeBetweenBalls = ConfigurationUtils.MaxBallSpawnTime;
+        nextTimeBetweenBalls = Random.Range(minTimeBetweenBalls, maxTimeBetweenBalls);
     }
 
     // Update is called once per frame
@@ -26,9 +31,10 @@ public class BallSpawner : MonoBehaviour
     {
         timeSinceLastBall += Time.deltaTime;
 
-        if (timeSinceLastBall >= timeBetweenBalls)
+        if (timeSinceLastBall >= nextTimeBetweenBalls)
         {
             SpawnBall();
+            nextTimeBetweenBalls = Random.Range(minTimeBetweenBalls, maxTimeBetweenBalls);
         }
     }
 

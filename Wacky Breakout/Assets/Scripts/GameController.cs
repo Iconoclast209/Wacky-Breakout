@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ballsRemaining = ConfigurationUtils.NumberBallsPerGame;
         score = 0;
         levelManager = FindObjectOfType<LevelManager>();
         audioSource = GetComponent<AudioSource>();

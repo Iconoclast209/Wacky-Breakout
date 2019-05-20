@@ -5,25 +5,42 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     #region FIELDS
-    [SerializeField]
     int points = 0;
     [SerializeField]
-    int typeIndex;
-    //BLOCK type 0 = standard, 1= bonus, 2 = freezer, 3 = speedup
-    //enum Type { standard, bonus, freezer, speedup };
+    int typeIndex;  //BLOCK type 0 = standard, 1= bonus, 2 = freezer, 3 = speedup
     GameController gameController;
-        
-        #endregion
+    #endregion
 
     #region METHODS
 
     private void Start()
     {
+        DeterminePoints();
         gameController = FindObjectOfType<GameController>();
         gameController.AddBlock();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void DeterminePoints()
+    {
+        if (typeIndex == 0 || typeIndex == 1)
+        {
+            //Standard or Bonus Block Points
+            points = ConfigurationUtils.PointsStandard;
+        }
+
+        else if (typeIndex == 2)
+        {
+            //Freezer Block Points
+            points = ConfigurationUtils.PointsFreezer;
+        }
+        else
+        {
+            //Speedup Block Points
+            points = ConfigurationUtils.PointsSpeedup;
+        }
+    }
+    
+     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Ball"))
         {
@@ -46,18 +63,22 @@ public class Block : MonoBehaviour
         else if(typeIndex == 2)
         {
             //freezer block behavior
-            Paddle paddle = FindObjectOfType<Paddle>();
-            paddle.FreezePaddle();
+            //Paddle paddle = FindObjectOfType<Paddle>();
+            //paddle.FreezePaddle();
+            gameController.RecordScore(points);
         }
         else
         {
             //speedup block behavior
+            gameController.RecordScore(points);
             //Find all the balls
+            /*
             Ball[] balls = FindObjectsOfType<Ball>();
             foreach(Ball ball in balls)
             {
                 ball.AddSpeedToBall();
             }
+            */
         }
         gameController.BlockDestroyed();
         Destroy(this.gameObject);
