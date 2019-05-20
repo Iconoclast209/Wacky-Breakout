@@ -273,6 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 915873791}
+  - component: {fileID: 915873792}
   m_Layer: 0
   m_Name: BlockSpawner
   m_TagString: Untagged
@@ -294,6 +295,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915873792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915873790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e444b8691509c4296cc7d348e09b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: -7.5, y: 1}
+  blockPrefabs:
+  - {fileID: 2820621176031340513, guid: cc7ab7ed2a819bf4ab9cedffa3320d8a, type: 3}
+  - {fileID: 4160874854042743669, guid: 61254e4329d43744482a5025153d4002, type: 3}
+  - {fileID: 1097080013676626370, guid: 474d3e552b84a7a47bec05241d1737c9, type: 3}
+  - {fileID: 8676971129982118659, guid: 16142370d6bc5b648aa5c03192cf5b77, type: 3}
 --- !u!1 &984758838
 GameObject:
   m_ObjectHideFlags: 0
