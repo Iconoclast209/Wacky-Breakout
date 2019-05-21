@@ -38,7 +38,7 @@ public class BallSpawner : MonoBehaviour
         }
     }
 
-    void SpawnBall()
+    public void SpawnBall()
     {
         //spawn a ball
         //Instantiate a ball

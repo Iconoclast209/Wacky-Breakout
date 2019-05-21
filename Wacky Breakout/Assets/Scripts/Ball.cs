@@ -8,12 +8,14 @@ public class Ball : MonoBehaviour
     float lifetime;
     float elapsedTime = 0;
     GameController gameController;
+    BallSpawner ballSpawner;
     
     // Start is called before the first frame update
     void Start()
     {
         lifetime = ConfigurationUtils.BallLifetime;
         gameController = FindObjectOfType<GameController>();
+        ballSpawner = FindObjectOfType<BallSpawner>();
     }
 
     // Update is called once per frame
@@ -28,7 +30,8 @@ public class Ball : MonoBehaviour
 
     void DestroyMe()
     {
-        //Tell GameController this ball is gone
+        gameController.RecordLossOfBall();
+        ballSpawner.SpawnBall();
         Destroy(this.gameObject);
     }
 
